@@ -9,4 +9,6 @@
 #  user_id    :integer          not null
 #
 class Workout < ApplicationRecord
+  belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
+  has_many(:exercises, { :class_name => "Exercise", :foreign_key => "workout_id", :dependent => :destroy })
 end

@@ -10,4 +10,5 @@
 #  exercise_id :integer          not null
 #
 class Zet < ApplicationRecord
+  rails generate draft:resource zet reps:integer weight:integer exercise_id:integer
 end

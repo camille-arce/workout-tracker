@@ -12,4 +12,5 @@
 #  updated_at    :datetime         not null
 #
 class Activity < ApplicationRecord
+  has_many(:activity_to_exercise, { :class_name => "Exercise", :foreign_key => "activity_id", :dependent => :destroy })
 end
