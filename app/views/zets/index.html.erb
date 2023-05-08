@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all zets
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new zet
+    </h2>
+
+    <form action="/insert_zet" method="post">
+      <div>
+        <label for="reps_box">
+          Reps
+        </label>
+
+        <input type="text" id="reps_box" name="query_reps">
+      </div>
+
+      <div>
+        <label for="weight_box">
+          Weight
+        </label>
+
+        <input type="text" id="weight_box" name="query_weight">
+      </div>
+
+      <div>
+        <label for="exercise_id_box">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id_box" name="query_exercise_id">
+      </div>
+
+      <button>
+        Create zet
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Reps
+        </th>
+
+        <th>
+          Weight
+        </th>
+
+        <th>
+          Exercise
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_zets.each do |a_zet| %>
+      <tr>
+        <td>
+          <%= a_zet.id %>
+        </td>
+
+        <td>
+          <%= a_zet.reps %>
+        </td>
+
+        <td>
+          <%= a_zet.weight %>
+        </td>
+
+        <td>
+          <%= a_zet.exercise_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_zet.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_zet.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/zets/<%= a_zet.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

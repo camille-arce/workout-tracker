@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Zet resource:
+
+  # CREATE
+  post("/insert_zet", { :controller => "zets", :action => "create" })
+          
+  # READ
+  get("/zets", { :controller => "zets", :action => "index" })
+  
+  get("/zets/:path_id", { :controller => "zets", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_zet/:path_id", { :controller => "zets", :action => "update" })
+  
+  # DELETE
+  get("/delete_zet/:path_id", { :controller => "zets", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Activity resource:
 
   # CREATE

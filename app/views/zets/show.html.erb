@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Zet #<%= @the_zet.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/zets">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_zet/<%= @the_zet.id %>">
+          Delete zet
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Reps
+      </dt>
+      <dd>
+        <%= @the_zet.reps %>
+      </dd>
+
+      <dt>
+        Weight
+      </dt>
+      <dd>
+        <%= @the_zet.weight %>
+      </dd>
+
+      <dt>
+        Exercise
+      </dt>
+      <dd>
+        <%= @the_zet.exercise_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_zet.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_zet.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit zet
+    </h2>
+
+    <form action="/modify_zet/<%= @the_zet.id %>"  method="post" >
+      <div>
+        <label for="reps_box">
+          Reps
+        </label>
+
+        <input type="text" id="reps_box" name="query_reps" value="<%= @the_zet.reps %>">
+      </div>
+
+      <div>
+        <label for="weight_box">
+          Weight
+        </label>
+
+        <input type="text" id="weight_box" name="query_weight" value="<%= @the_zet.weight %>">
+      </div>
+
+      <div>
+        <label for="exercise_id_box">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id_box" name="query_exercise_id" value="<%= @the_zet.exercise_id %>">
+      </div>
+
+      <button>
+        Update zet
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
