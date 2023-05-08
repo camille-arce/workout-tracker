@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Activity #<%= @the_activity.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/activities">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_activity/<%= @the_activity.id %>">
+          Delete activity
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_activity.name %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @the_activity.image %>
+      </dd>
+
+      <dt>
+        Equipments
+      </dt>
+      <dd>
+        <%= @the_activity.equipments %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_activity.description %>
+      </dd>
+
+      <dt>
+        Target muscle
+      </dt>
+      <dd>
+        <%= @the_activity.target_muscle %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_activity.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_activity.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit activity
+    </h2>
+
+    <form action="/modify_activity/<%= @the_activity.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_activity.name %>">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_activity.image %>">
+      </div>
+
+      <div>
+        <label for="equipments_box">
+          Equipments
+        </label>
+
+        <input type="text" id="equipments_box" name="query_equipments" value="<%= @the_activity.equipments %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_activity.description %></textarea>
+      </div>
+
+      <div>
+        <label for="target_muscle_box">
+          Target muscle
+        </label>
+
+        <input type="text" id="target_muscle_box" name="query_target_muscle" value="<%= @the_activity.target_muscle %>">
+      </div>
+
+      <button>
+        Update activity
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

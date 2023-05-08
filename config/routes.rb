@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Activity resource:
+
+  # CREATE
+  post("/insert_activity", { :controller => "activities", :action => "create" })
+          
+  # READ
+  get("/activities", { :controller => "activities", :action => "index" })
+  
+  get("/activities/:path_id", { :controller => "activities", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_activity/:path_id", { :controller => "activities", :action => "update" })
+  
+  # DELETE
+  get("/delete_activity/:path_id", { :controller => "activities", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Exercise resource:
 
   # CREATE
