@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_08_144936) do
+ActiveRecord::Schema.define(version: 2023_05_08_145405) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2023_05_08_144936) do
     t.integer "height", default: 0
     t.integer "weight", default: 0
     t.text "fitness_goal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
