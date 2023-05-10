@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   def index
     matching_workouts = Workout.all
 
-    @list_of_workouts = matching_workouts.order({ :created_at => :desc })
+    @list_of_workouts = matching_workouts.order({ :date => :desc })
 
     render({ :template => "workouts/index.html.erb" })
   end
