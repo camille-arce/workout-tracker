@@ -6,29 +6,19 @@
 
     <div>
       <div>
-        <a href="/workouts">
-          Go back
-        </a>
+        <a href="/workouts">Go back</a>
       </div>
 
       <div>
-        <a href="/delete_workout/<%= @the_workout.id %>">
-          Delete workout
-        </a>
+        <a href="/delete_workout/<%= @the_workout.id %>">Delete workout</a>
       </div>
     </div>
 
     <dl>
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_workout.user_id %>
-      </dd>
+      <dt>User</dt>
+      <dd><%= @the_workout.user_id %></dd>
 
-      <dt>
-        Date
-      </dt>
+      <dt>Date</dt>
       <dd>
         <%= @the_workout.date %>
       </dd>
