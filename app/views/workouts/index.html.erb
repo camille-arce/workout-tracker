@@ -8,55 +8,43 @@
 
 <hr>
 
-<h3><a href="workouts/new">Add a new workout</a></h3>
+<h3>
+  <a href="workouts/new" class="btn btn-primary">Add a new workout</a>
+</h3>
 
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-        Exercises
-        </th>
 
-        <th>
-        User
-        </th>
+<div class="card-deck">
+  <% @list_of_workouts.each do |a_workout| %>
+   <% if @current_user.id == a_workout.user_id %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Workout Details</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Exercises:</strong>
+            <% if a_workout.exercises.any? %>
+              <ul>
+                <% a_workout.exercises.each do |exercise| %>
+                  <li><%= exercise.activity.name %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              No exercises yet
+            <% end %>
 
-        <th>
-        Date
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <tr>
-      <% @list_of_workouts.each do |a_workout| %>
-        <td>
-        <% if a_workout.exercises.any? %>
-          <% a_workout.exercises.each do |exercise| %>
-         <li> <%= exercise.activity.name %> <li>
-          <% end %>
-        <% else %>
-          No exercises yet
-        <% end %>
-        </td>
-
-        <td>
-          <%= a_workout.user.username %>
-        </td>
-
-        <td>
-          <%= a_workout.date %>
-        </td>
-
-        <td>
-          <a href="/workouts/<%= a_workout.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+          </li>
+          <li class="list-group-item">
+            <strong>User:</strong> <%= a_workout.user.username %>
+          </li>
+          <li class="list-group-item">
+            <strong>Date:</strong> <%= a_workout.date %>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a href="/workouts/<%= a_workout.id %>" class="card-link">Show details</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

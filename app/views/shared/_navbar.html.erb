@@ -27,15 +27,17 @@
             <a href="/workouts" class="dropdown-item">
               Workouts
             </a>
-               <a href="/user_sign_up" class="dropdown-item">
+            <a href="/user_sign_up" class="dropdown-item">
               Sign up
             </a>
             <% if @current_user == nil %>
               <a href="/user_sign_in" class="dropdown-item">
-              Sign in </a>
+                Sign in
+              </a>
             <% else %>
-              <a href="/user_sign_out" class="dropdown-item">Sign out</a>
-            </a>
+              <a href="/user_sign_out" class="dropdown-item">
+                Sign out
+              </a>
             <% end %>
           </div>
         </li>
@@ -43,3 +45,4 @@
     </div> <!-- .navbar-collapse -->
   </div> <!-- .container -->
 </nav>
+
