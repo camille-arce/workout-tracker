@@ -1,8 +1,6 @@
 <div>
   <div>
-    <h1>
-      <%= @current_user.username.capitalize %>'s Workout History
-    </h1>
+    <h1><%= @current_user.username.capitalize %>'s Workout History</h1>
   </div>
 </div>
 
@@ -13,38 +11,34 @@
 </h3>
 
 
-<div class="card-deck">
+<div class="row">
   <% @list_of_workouts.each do |a_workout| %>
-   <% if @current_user.id == a_workout.user_id %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Workout Details</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Exercises:</strong>
-            <% if a_workout.exercises.any? %>
-              <ul>
-                <% a_workout.exercises.each do |exercise| %>
-                  <li><%= exercise.activity.name %></li>
+    <% if @current_user.id == a_workout.user_id %>
+      <div class="col-md-4 mb-4">
+        <div class="card custom-card shadow h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= a_workout.date.strftime("%B %d, %Y") %></h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Exercises:</strong>
+                <% if a_workout.exercises.any? %>
+                  <ul>
+                    <% a_workout.exercises.each do |exercise| %>
+                      <li><%= exercise.activity.name %></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  No exercises yet
                 <% end %>
-              </ul>
-            <% else %>
-              No exercises yet
-            <% end %>
-
-          </li>
-          <li class="list-group-item">
-            <strong>User:</strong> <%= a_workout.user.username %>
-          </li>
-          <li class="list-group-item">
-            <strong>Date:</strong> <%= a_workout.date %>
-          </li>
-        </ul>
-        <div class="card-body">
-          <a href="/workouts/<%= a_workout.id %>" class="card-link">Show details</a>
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="/workouts/<%= a_workout.id %>" class="card-link">Show details</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   <% end %>
 </div>
+
