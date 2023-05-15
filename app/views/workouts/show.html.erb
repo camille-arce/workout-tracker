@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Workout #<%= @the_workout.id %> details
+      <%= @the_workout.date.strftime %> 
     </h1>
 
     <div>
@@ -15,21 +15,6 @@
     </div>
 
     <dl>
-      <dt>User</dt>
-      <dd><%= @the_workout.user_id %></dd>
-
-      <dt>Date</dt>
-      <dd>
-        <%= @the_workout.date %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_workout.created_at) %> ago
-      </dd>
-
       <dt>
         Updated at
       </dt>
@@ -45,18 +30,7 @@
 
 <div>
   <div>
-    <h2>
-      Edit workout
-    </h2>
-
     <form action="/modify_workout/<%= @the_workout.id %>"  method="post" >
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_workout.user_id %>">
-      </div>
 
       <div>
         <label for="date_box">
@@ -74,3 +48,45 @@
 </div>
 
 <hr>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Exercise Name</th>
+      <th>More Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @the_workout.exercises.each do |exercise| %>
+      <tr>
+        <td><%= exercise.activity.name %></td>
+        <td> show details </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  
+    <form action="/insert_exercise" method="post">
+
+        <input type="hidden" id="workout_id_box" name="query_workout_id" value="<%= @the_workout.id %>">
+
+      <div>
+        <label for="activity_id_box">
+        </label>
+
+        <select name="query_activity_id" id="activity_id_box">
+          <% Activity.all.order(:name).each do |activity| %>
+            <option value="<%= activity.id %>">
+              <%= activity.name %>
+            </option>
+          <% end %>
+        
+        </select>
+      </div>
+
+      <button>
+        Add exercise
+      </button>
+    </form>
+  

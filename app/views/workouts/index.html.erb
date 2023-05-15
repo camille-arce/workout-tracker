@@ -1,42 +1,14 @@
 <div>
   <div>
     <h1>
-      List of all workouts
+      <%= @current_user.username.capitalize %>'s Workout History
     </h1>
   </div>
 </div>
 
 <hr>
 
-<div>
-  <div>
-    <h2>
-      Add a new workout
-    </h2>
-
-    <form action="/insert_workout" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="date_box">
-          Date
-        </label>
-
-        <input type="date" id="date_box" name="query_date">
-      </div>
-
-      <button>
-        Create workout
-      </button>
-    </form>
-  </div>
-</div>
+<h3><a href="workouts/new">Add a new workout</a></h3>
 
 <hr>
 <div>
@@ -44,48 +16,39 @@
     <table border="1">
       <tr>
         <th>
-          ID
+        Exercises
         </th>
 
         <th>
-          User
+        User
         </th>
 
         <th>
-          Date
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
+        Date
         </th>
 
         <th>
         </th>
       </tr>
 
-      <% @list_of_workouts.each do |a_workout| %>
       <tr>
+      <% @list_of_workouts.each do |a_workout| %>
         <td>
-          <%= a_workout.id %>
+        <% if a_workout.exercises.any? %>
+          <% a_workout.exercises.each do |exercise| %>
+         <li> <%= exercise.activity.name %> <li>
+          <% end %>
+        <% else %>
+          No exercises yet
+        <% end %>
         </td>
 
         <td>
-          <%= a_workout.user_id %>
+          <%= a_workout.user.username %>
         </td>
 
         <td>
           <%= a_workout.date %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_workout.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_workout.updated_at) %> ago
         </td>
 
         <td>
@@ -97,6 +60,3 @@
       <% end %>
     </table>
   </div>
-</div>
-
-<hr>

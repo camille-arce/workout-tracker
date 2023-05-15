@@ -15,5 +15,5 @@
 class Activity < ApplicationRecord
   validates :name, :uniqueness => { :case_sensitive => false }
   
-  has_many(:activity_to_exercise, { :class_name => "Exercise", :foreign_key => "activity_id", :dependent => :destroy })
+  belongs_to(:activity_to_exercise, { :class_name => "Exercise", :foreign_key => "activity_id", :dependent => :destroy })
 end

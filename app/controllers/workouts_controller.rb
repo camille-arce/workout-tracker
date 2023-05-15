@@ -7,6 +7,9 @@ class WorkoutsController < ApplicationController
     render({ :template => "workouts/index.html.erb" })
   end
 
+  def new
+  end
+  
   def show
     the_id = params.fetch("path_id")
 
@@ -19,7 +22,7 @@ class WorkoutsController < ApplicationController
 
   def create
     the_workout = Workout.new
-    the_workout.user_id = params.fetch("query_user_id")
+    the_workout.user_id = @current_user.id
     the_workout.date = params.fetch("query_date")
 
     if the_workout.valid?
@@ -34,7 +37,7 @@ class WorkoutsController < ApplicationController
     the_id = params.fetch("path_id")
     the_workout = Workout.where({ :id => the_id }).at(0)
 
-    the_workout.user_id = params.fetch("query_user_id")
+    the_workout.user_id = @current_user.id
     the_workout.date = params.fetch("query_date")
 
     if the_workout.valid?

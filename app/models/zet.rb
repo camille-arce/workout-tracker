@@ -10,5 +10,5 @@
 #  exercise_id :integer          not null
 #
 class Zet < ApplicationRecord
-  belongs_to(:activity, { :required => true, :class_name => "Exercise", :foreign_key => "exercise_id" })
+  belongs_to(:exercise, { :required => true, :class_name => "Exercise", :foreign_key => "exercise_id" })
 end

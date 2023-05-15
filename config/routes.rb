@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
 
   # Routes for the Zet resource:
+ 
+  get("/", { controller: "workouts", action: "index" })
 
+  get("/workouts/new", { controller: "workouts", action: "new"})
+  
   # CREATE
   post("/insert_zet", { :controller => "zets", :action => "create" })
           

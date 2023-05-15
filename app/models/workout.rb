@@ -10,6 +10,7 @@
 #
 class Workout < ApplicationRecord
   validates :user_id, :presence => true
+  validates :date, :presence => true
 
   belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
   has_many(:exercises, { :class_name => "Exercise", :foreign_key => "workout_id", :dependent => :destroy })
