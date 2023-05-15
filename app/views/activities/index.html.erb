@@ -1,150 +1,63 @@
+<head>
+<style>
+.table-header {
+  background-color: #007bff; /* Custom color */
+  color: #fff; /* Text color */
+  font-size: 24px; /* Font size */
+  font-weight: bold; /* Font weight */
+  text-align: center; /* Center alignment */
+  padding: 10px; /* Padding */
+}
+</style>
+
+</head>
+<body>
 <div>
   <div>
     <h1>
-      List of all activities
+  Exercises
     </h1>
   </div>
 </div>
 
-<hr>
-
 <div>
   <div>
-    <h2>
-      Add a new activity
-    </h2>
+<h3>
+  <a href="activities/new" class="btn btn-primary">Add a new exercise</a>
+</h3>
 
-    <form action="/insert_activity" method="post">
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name">
-      </div>
-
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-
-        <input type="text" id="image_box" name="query_image">
-      </div>
-
-      <div>
-        <label for="equipments_box">
-          Equipments
-        </label>
-
-        <input type="text" id="equipments_box" name="query_equipments">
-      </div>
-
-      <div>
-        <label for="description_box">
-          Description
-        </label>
-
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
-      </div>
-
-      <div>
-        <label for="target_muscle_box">
-          Target muscle
-        </label>
-
-        <input type="text" id="target_muscle_box" name="query_target_muscle">
-      </div>
-
-      <button>
-        Create activity
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
 <div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Name
-        </th>
-
-        <th>
-          Image
-        </th>
-
-        <th>
-          Equipments
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Target muscle
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_activities.each do |an_activity| %>
-      <tr>
-        <td>
-          <%= an_activity.id %>
-        </td>
-
-        <td>
-          <%= an_activity.name %>
-        </td>
-
-        <td>
-         <img width="400" height="300" src="<%= an_activity.image %>" class="activity_images">
-        </td>
-
-        <td>
-          <%= an_activity.equipments %>
-        </td>
-
-        <td>
-          <%= an_activity.description %>
-        </td>
-
-        <td>
-          <%= an_activity.target_muscle %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(an_activity.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(an_activity.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/activities/<%= an_activity.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+  <div class="exercise-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="6" class="table-header">Exercise Table</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Equipments</th>
+          <th>Description</th>
+          <th>Target Muscle</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_activities.each do |an_activity| %>
+        <tr>
+          <td><%= an_activity.name.capitalize %></td>
+          <td>
+            <%= image_tag an_activity.image, class: "activity-image" %>
+          </td>
+          <td><%= an_activity.equipments.capitalize %></td>
+          <td><%= an_activity.description %></td>
+          <td><%= an_activity.target_muscle.capitalize %></td>
+          <td>
+            <a href="/activities/<%= an_activity.id %>" class="btn btn-outline-secondary btn-sm">+</a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
-
-<hr>

@@ -3,46 +3,25 @@
     <a class="navbar-brand" href="/">
       History
     </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="collapsible-nav-links">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Resources
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/zets" class="dropdown-item">
-              Sets
-            </a>
-            <a href="/activities" class="dropdown-item">
-              Activities
-            </a>
-            <a href="/exercises" class="dropdown-item">
-              Exercises
-            </a>
-            <a href="/workouts" class="dropdown-item">
-              Workouts
-            </a>
-            <a href="/user_sign_up" class="dropdown-item">
-              Sign up
-            </a>
-            <% if @current_user == nil %>
-              <a href="/user_sign_in" class="dropdown-item">
-                Sign in
-              </a>
-            <% else %>
-              <a href="/user_sign_out" class="dropdown-item">
-                Sign out
-              </a>
-            <% end %>
-          </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/activities" class="nav-link">Exercises</a>
+      </li>
+      <li class="nav-item">
+        <a href="/workouts/new" class="nav-link">New Workout</a>
+      </li>
+      <% if @current_user == nil %>
+        <li class="nav-item">
+          <a href="/user_sign_up" class="nav-link">Sign up</a>
         </li>
-      </ul>
-    </div> <!-- .navbar-collapse -->
+        <li class="nav-item">
+          <a href="/user_sign_in" class="nav-link">Sign in</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a href="/user_sign_out" class="nav-link">Sign out</a>
+        </li>
+      <% end %>
+    </ul>
   </div> <!-- .container -->
 </nav>
-

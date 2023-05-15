@@ -6,6 +6,8 @@ class ActivitiesController < ApplicationController
 
     render({ :template => "activities/index.html.erb" })
   end
+  def new
+  end
 
   def show
     the_id = params.fetch("path_id")

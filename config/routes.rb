@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get("/", { controller: "workouts", action: "index" })
 
   get("/workouts/new", { controller: "workouts", action: "new"})
+  get("/activities/new", { controller: "activities", action: "new"})
   
   # CREATE
   post("/insert_zet", { :controller => "zets", :action => "create" })

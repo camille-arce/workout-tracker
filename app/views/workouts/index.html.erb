@@ -24,7 +24,15 @@
                 <% if a_workout.exercises.any? %>
                   <ul>
                     <% a_workout.exercises.each do |exercise| %>
-                      <li><%= exercise.activity.name %></li>
+                       <li>
+                        <%= exercise.activity.name %>
+                          <select class="dropdown-select form-select" name="">
+                            <option value="">Sets</option>
+                            <% exercise.zets.each do |s|%>
+                              <option value="<%= s.id %>"><%= s %></option>
+                            <% end %>
+                          </select>
+                      </li>
                     <% end %>
                   </ul>
                 <% else %>
@@ -41,4 +49,3 @@
     <% end %>
   <% end %>
 </div>
-
