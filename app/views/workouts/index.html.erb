@@ -24,14 +24,17 @@
                 <% if a_workout.exercises.any? %>
                   <ul>
                     <% a_workout.exercises.each do |exercise| %>
-                       <li>
-                        <%= exercise.activity.name %>
-                          <select class="dropdown-select form-select" name="">
-                            <option value="">Sets</option>
+                      <li>
+                        <button class="accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#exercise-details-<%= exercise.id %>">
+                          <%= exercise.activity.name %>
+                        </button>
+                        <div id="exercise-details-<%= exercise.id %>" class="collapse">
+                          <ul class="exercise-details-list">
                             <% exercise.zets.each do |s|%>
-                              <option value="<%= s.id %>"><%= s %></option>
+                              <li><%= s %></li>
                             <% end %>
-                          </select>
+                          </ul>
+                        </div>
                       </li>
                     <% end %>
                   </ul>
@@ -49,3 +52,23 @@
     <% end %>
   <% end %>
 </div>
+
+<style>
+  .accordion-btn {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .accordion-btn:hover {
+    border-color: #b5b5b5;
+  }
+</style>
