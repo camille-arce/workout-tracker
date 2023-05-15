@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      <%= @the_workout.date.strftime %> 
+      <%= @the_workout.date.strftime("%B %d, %Y") %>
     </h1>
 
     <div>
@@ -54,27 +54,26 @@
   <thead>
     <tr>
       <th>Exercise Name</th>
-      <th>More Details</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @the_workout.exercises.each do |exercise| %>
       <tr>
         <td><%= exercise.activity.name %></td>
-        <td> show details </td>
+        <td>
+            <a href="/exercises/<%= exercise.id %>" class="btn btn-outline-secondary btn-sm">+</a>
+          </td>
       </tr>
     <% end %>
   </tbody>
 </table>
   
     <form action="/insert_exercise" method="post">
-
         <input type="hidden" id="workout_id_box" name="query_workout_id" value="<%= @the_workout.id %>">
-
       <div>
         <label for="activity_id_box">
         </label>
-
         <select name="query_activity_id" id="activity_id_box">
           <% Activity.all.order(:name).each do |activity| %>
             <option value="<%= activity.id %>">

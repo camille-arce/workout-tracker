@@ -25,7 +25,7 @@ class ZetsController < ApplicationController
 
     if the_zet.valid?
       the_zet.save
-      redirect_to("/zets", { :notice => "Zet created successfully." })
+      redirect_to("/exercises/#{the_zet.exercise_id}", { :notice => "Set added successfully." })
     else
       redirect_to("/zets", { :alert => the_zet.errors.full_messages.to_sentence })
     end

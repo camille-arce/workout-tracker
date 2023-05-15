@@ -1,8 +1,8 @@
 <div>
   <div>
-    <h1>
-      Exercise #<%= @the_exercise.id %> details
-    </h1>
+    <h1><%= @the_exercise.workout.date.strftime("%B %d, %Y") %></h1>
+    <h2><%= @the_exercise.activity.name.upcase %></h2>
+    
 
     <div>
       <div>
@@ -20,28 +20,7 @@
 
     <dl>
       <dt>
-        Workout
-      </dt>
-      <dd>
-        <%= @the_exercise.workout_id %>
-      </dd>
-
-      <dt>
-        Activity
-      </dt>
-      <dd>
-        <%= @the_exercise.activity_id %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_exercise.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
+        Last updated
       </dt>
       <dd>
         <%= time_ago_in_words(@the_exercise.updated_at) %> ago
@@ -52,7 +31,6 @@
 
 <hr>
 
-
 <div>
   <div>
     <h2>
@@ -61,20 +39,21 @@
 
     <form action="/modify_exercise/<%= @the_exercise.id %>"  method="post" >
       <div>
-        <label for="workout_id_box">
-          Workout
-        </label>
-
-        <input type="text" id="workout_id_box" name="query_workout_id" value="<%= @the_exercise.workout_id %>">
+        <input type="hidden" id="workout_id_box" name="query_workout_id" value="<%= @the_exercise.workout_id %>">
       </div>
 
-      <div>
-        <label for="activity_id_box">
-          Activity
-        </label>
+          <div>
+            <label for="activity_id_box">
+              Exercise
+            </label>
 
-        <input type="text" id="activity_id_box" name="query_activity_id" value="<%= @the_exercise.activity_id %>">
-      </div>
+            <select id="activity_id_box" name="query_activity_id">
+              <% Activity.order(:name).each do |activity| %>
+                <option value="<%= activity.id %>"><%= activity.name.downcase %></option>
+              <% end %>
+            </select>
+          </div>
+
 
       <button>
         Update exercise
@@ -84,3 +63,57 @@
 </div>
 
 <hr>
+<table>
+  <thead>
+    <tr>
+      <th>Number of Reps</th>
+      <th>Weight</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @the_exercise.zets.each do |zet| %>
+      <tr>
+        <td><%= zet.reps %></td>
+        <td><%= zet.weight %></td>
+        <td>
+            <a href="/zets/<%= zet.id %>" class="btn btn-outline-secondary btn-sm">+</a>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <div>
+    <h2>
+      Add a new zet
+    </h2>
+
+    <form action="/insert_zet" method="post">
+      <div>
+        <label for="reps_box">
+          Reps
+        </label>
+
+        <input type="text" id="reps_box" name="query_reps">
+      </div>
+
+      <div>
+        <label for="weight_box">
+          Weight
+        </label>
+
+        <input type="text" id="weight_box" name="query_weight">
+      </div>
+
+      <div>
+        <input type="hidden" name="query_exercise_id" value="<%= @the_exercise.id %>">
+      </div>
+
+      <button>
+        Add a set!
+      </button>
+    </form>
+  </div>
+</div>
+  
