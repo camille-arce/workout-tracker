@@ -6,9 +6,7 @@
 
     <div>
       <div>
-        <a href="/exercises">
-          Go back
-        </a>
+        <a href="/workouts/<%= @the_exercise.workout.id %>">Go back</a>
       </div>
 
       <div>
@@ -85,10 +83,6 @@
 </table>
 <div>
   <div>
-    <h2>
-      Add a new zet
-    </h2>
-
     <form action="/insert_zet" method="post">
       <div>
         <label for="reps_box">

@@ -1,14 +1,12 @@
 <div>
   <div>
     <h1>
-      Zet #<%= @the_zet.id %> details
+      <%= @the_zet.exercise.activity.name.capitalize %> Set
     </h1>
 
     <div>
       <div>
-        <a href="/zets">
-          Go back
-        </a>
+        <a href="/exercises/<%= @the_zet.exercise.id %>">Go back</a>
       </div>
 
       <div>
@@ -63,7 +61,7 @@
 <div>
   <div>
     <h2>
-      Edit zet
+      Edit set
     </h2>
 
     <form action="/modify_zet/<%= @the_zet.id %>"  method="post" >
@@ -84,15 +82,11 @@
       </div>
 
       <div>
-        <label for="exercise_id_box">
-          Exercise
-        </label>
-
-        <input type="text" id="exercise_id_box" name="query_exercise_id" value="<%= @the_zet.exercise_id %>">
+        <input type="hidden" id="exercise_id_box" name="query_exercise_id" value="<%= @the_zet.exercise_id %>">
       </div>
 
       <button>
-        Update zet
+        Update set
       </button>
     </form>
   </div>
