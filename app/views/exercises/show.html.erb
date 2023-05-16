@@ -27,7 +27,7 @@
               <label for="activity_id_box">Edit exercise:</label>
               <select id="activity_id_box" name="query_activity_id" class="form-control">
                 <% Activity.order(:name).each do |activity| %>
-                  <option value="<%= activity.id %>"><%= activity.name.downcase %></option>
+                  <option value="<%= activity.id %>"><%= activity.name.split.map(&:capitalize).join(' ')%></option>
                 <% end %>
               </select>
             </div>

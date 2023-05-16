@@ -46,16 +46,6 @@
         </div>
 
         <div class="col-6">
-          <dt>
-            Updated
-          </dt>
-          <dd>
-            <%= time_ago_in_words(@the_activity.updated_at) %> ago
-          </dd>
-
-          <dt>
-            Image
-          </dt>
           <dd>
             <img src="<%= @the_activity.image %>" style="width: 100%; max-height: 300px;" class="img-fluid">
           </dd>
@@ -70,10 +60,6 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">
-        Edit activity
-      </h2>
-
       <form action="/modify_activity/<%= @the_activity.id %>" method="post">
         <div class="mb-3">
           <label for="name_box" class="form-label">
@@ -110,7 +96,7 @@
           <input type="text" id="target_muscle_box" name="query_target_muscle" value="<%= @the_activity.target_muscle %>" class="form-control">
         </div>
             <button type="submit" class="btn btn-primary">
-      Update activity
+      Edit Exercise
     </button>
   </form>
 </div>

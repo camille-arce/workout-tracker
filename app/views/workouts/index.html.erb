@@ -23,7 +23,7 @@
                 <% a_workout.exercises.each do |exercise| %>
                   <div class="exercise-item">
                     <button class="accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#exercise-details-<%= exercise.id %>">
-                      <%= exercise.activity.name %>
+                      <%= exercise.activity.name.split.map(&:capitalize).join(' ')%>
                     </button>
                     <div id="exercise-details-<%= exercise.id %>" class="collapse">
                       <ul class="exercise-details-list">
@@ -38,15 +38,14 @@
                 <p>No exercise logged</p>
               <% end %>
             </div>
-            <div class="card-footer">
-              <a href="/workouts/<%= a_workout.id %>" class="card-link ml-auto">Edit</a>
-            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+            <a href="/workouts/<%= a_workout.id %>" class="card-link"> edit </a>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
-
 
 <%= render 'shared/pagination' %>
