@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm">
@@ -24,15 +24,16 @@
             </div>
             
             <div class="form-group">
-              <label for="activity_id_box">Edit exercise:</label>
+              <label for="activity_id_box">Edit Exercise:</label>
               <select id="activity_id_box" name="query_activity_id" class="form-control">
                 <% Activity.order(:name).each do |activity| %>
                   <option value="<%= activity.id %>"><%= activity.name.split.map(&:capitalize).join(' ')%></option>
                 <% end %>
               </select>
             </div>
-            
-            <button type="submit" class="btn btn-primary">Update exercise</button>
+            <div class="text-end">
+            <button type="submit" class="btn btn-primary mt-2 btn-sm ">Update</button>
+            </div>
           </form>
           
           <hr>
@@ -42,7 +43,7 @@
               <tr>
                 <th>Number of Reps</th>
                 <th>Weight</th>
-                <th></th>
+                <th class="text-end"></th>
               </tr>
             </thead>
             <tbody>
@@ -50,7 +51,7 @@
                 <tr>
                   <td><%= zet.reps %></td>
                   <td><%= zet.weight %></td>
-                  <td>
+                  <td class="text-end">
                     <a href="/zets/<%= zet.id %>" class="btn btn-outline-secondary btn-sm">+</a>
                   </td>
                 </tr>
@@ -73,13 +74,17 @@
               <div class="form-group">
                 <input type="hidden" name="query_exercise_id" value="<%= @the_exercise.id %>">
               </div>
-                  <button type="submit" class="btn btn-primary">Add a set</button>
-              </form>
+              <div class="text-end">
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Add a set</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </div>
+  </div>  
+</div>
+
   </div>
+</div>
+
 
                     
