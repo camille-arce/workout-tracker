@@ -10,41 +10,36 @@
   <a href="workouts/new" class="btn btn-primary">Add a new workout</a>
 </h3>
 
-
 <div class="row">
   <% @list_of_workouts.each do |a_workout| %>
     <% if @current_user.id == a_workout.user_id %>
       <div class="col-md-4 mb-4">
-        <div class="card custom-card shadow h-100">
+        <div class="card custom-card shadow h-100 d-flex flex-column">
           <div class="card-body">
             <h5 class="card-title"><%= a_workout.date.strftime("%B %d, %Y") %></h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <strong>Exercises:</strong>
-                <% if a_workout.exercises.any? %>
-                  <ul>
-                    <% a_workout.exercises.each do |exercise| %>
-                      <li>
-                        <button class="accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#exercise-details-<%= exercise.id %>">
-                          <%= exercise.activity.name %>
-                        </button>
-                        <div id="exercise-details-<%= exercise.id %>" class="collapse">
-                          <ul class="exercise-details-list">
-                            <% exercise.zets.each do |s|%>
-                              <li><%= s %></li>
-                            <% end %>
-                          </ul>
-                        </div>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% else %>
-                  No exercises yet
+            <div class="exercise-list flex-grow-1">
+              <strong>Exercises:</strong>
+              <% if a_workout.exercises.any? %>
+                <% a_workout.exercises.each do |exercise| %>
+                  <div class="exercise-item">
+                    <button class="accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#exercise-details-<%= exercise.id %>">
+                      <%= exercise.activity.name %>
+                    </button>
+                    <div id="exercise-details-<%= exercise.id %>" class="collapse">
+                      <ul class="exercise-details-list">
+                        <% exercise.zets.each do |s|%>
+                          <li><%= s %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
                 <% end %>
-              </li>
-            </ul>
-            <div class="card-body">
-              <a href="/workouts/<%= a_workout.id %>" class="card-link">Show details</a>
+              <% else %>
+                <p>No exercise logged</p>
+              <% end %>
+            </div>
+            <div class="card-footer">
+              <a href="/workouts/<%= a_workout.id %>" class="card-link ml-auto">Edit</a>
             </div>
           </div>
         </div>
@@ -53,22 +48,5 @@
   <% end %>
 </div>
 
-<style>
-  .accordion-btn {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: left;
-    background-color: transparent;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
 
-  .accordion-btn:hover {
-    border-color: #b5b5b5;
-  }
-</style>
+<%= render 'shared/pagination' %>

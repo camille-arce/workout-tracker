@@ -14,6 +14,9 @@ gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'faker'
 gem 'chartkick'
+gem 'kaminari'
+gem "bootstrap4-kaminari-views"
+
 
 group :development do
   gem 'htmlbeautifier'

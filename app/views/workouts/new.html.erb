@@ -1,11 +1,18 @@
- <form action="/insert_workout" method="post">
-    <div>
-      <label for="date_box">Date</label>
-      <input type="date" id="date_box" name="query_date">
+<style>
+  .workout_form {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+  <form action="/insert_workout" method="post" class="text-center" class="workout-form">
+    <div class="mb-3">
+      <label for="date_box" class="form-label">Date</label>
+      <input type="date" id="date_box" name="query_date" class="form-control">
     </div>
-    <button>
+    <button type="submit" class="btn btn-primary">
       Create workout
     </button>
   </form>
-  </div>
-</div>

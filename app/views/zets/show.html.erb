@@ -1,95 +1,48 @@
-<div>
-  <div>
-    <h1>
-      <%= @the_zet.exercise.activity.name.capitalize %> Set
-    </h1>
+<div class="zet-details">
+  <h1><%= @the_zet.exercise.activity.name.upcase %></h1>
 
+  <div class="navigation-links">
     <div>
-      <div>
-        <a href="/exercises/<%= @the_zet.exercise.id %>">Go back</a>
-      </div>
-
-      <div>
-        <a href="/delete_zet/<%= @the_zet.id %>">
-          Delete zet
-        </a>
-      </div>
+      <a href="/exercises/<%= @the_zet.exercise.id %>">Go back</a>
     </div>
 
-    <dl>
-      <dt>
-        Reps
-      </dt>
-      <dd>
-        <%= @the_zet.reps %>
-      </dd>
-
-      <dt>
-        Weight
-      </dt>
-      <dd>
-        <%= @the_zet.weight %>
-      </dd>
-
-      <dt>
-        Exercise
-      </dt>
-      <dd>
-        <%= @the_zet.exercise_id %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_zet.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_zet.updated_at) %> ago
-      </dd>
-    </dl>
+    <div>
+      <a href="/delete_zet/<%= @the_zet.id %>">Delete set</a>
+    </div>
   </div>
+
+  <dl class="zet-info">
+    <dt>Repetition</dt>
+    <dd><%= @the_zet.reps %></dd>
+
+    <dt>Weight</dt>
+    <dd><%= @the_zet.weight %> lbs</dd>
+
+    <dt></dt>
+    <dd><%= time_ago_in_words(@the_zet.updated_at) %> ago</dd>
+  </dl>
 </div>
 
 <hr>
 
+<div class="edit-set">
+  <form action="/modify_zet/<%= @the_zet.id %>" method="post">
+    <div>
+      <label for="reps_box">Repetition</label>
+      <input type="text" id="reps_box" name="query_reps" value="<%= @the_zet.reps %>">
+    </div>
 
-<div>
-  <div>
-    <h2>
-      Edit set
-    </h2>
+    <div>
+      <label for="weight_box">Weight</label>
+      <input type="text" id="weight_box" name="query_weight" value="<%= @the_zet.weight %>">
+    </div>
 
-    <form action="/modify_zet/<%= @the_zet.id %>"  method="post" >
-      <div>
-        <label for="reps_box">
-          Reps
-        </label>
+    <div>
+      <input type="hidden" id="exercise_id_box" name="query_exercise_id" value="<%= @the_zet.exercise_id %>">
+    </div>
 
-        <input type="text" id="reps_box" name="query_reps" value="<%= @the_zet.reps %>">
-      </div>
-
-      <div>
-        <label for="weight_box">
-          Weight
-        </label>
-
-        <input type="text" id="weight_box" name="query_weight" value="<%= @the_zet.weight %>">
-      </div>
-
-      <div>
-        <input type="hidden" id="exercise_id_box" name="query_exercise_id" value="<%= @the_zet.exercise_id %>">
-      </div>
-
-      <button>
-        Update set
-      </button>
-    </form>
-  </div>
+    <button type="button" class="btn btn-outline-primary">Update set</button>
+  </form>
 </div>
 
 <hr>
