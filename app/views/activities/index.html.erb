@@ -51,7 +51,7 @@
           <% @list_of_activities.each do |an_activity| %>
           <tr>
             <td><%= an_activity.name.split.map(&:capitalize).join(' ')%></td>
-            <td>
+            <td background-color="white">
               <%= image_tag an_activity.image, class: "activity-image" %>
             </td>
             <td><%= an_activity.equipments.capitalize %></td>
