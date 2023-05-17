@@ -1,4 +1,7 @@
-<%= line_chart @the_activity.exercises.group_by_day(:created_at).count %>
+<div mt-4>
+
+<%= line_chart @the_activity.zets.joins(:user).where("users.id = ?", @current_user.id).group_by_day(:created_at).maximum(:weight) %>
+</div>
 
 <div class="container">
   <div class="card">

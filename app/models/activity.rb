@@ -18,4 +18,6 @@ class Activity < ApplicationRecord
   belongs_to(:activity_to_exercise, { :class_name => "Exercise", :foreign_key => "activity_id", :dependent => :destroy })
 
   has_many :exercises
+
+  has_many :zets, through: :exercises
 end

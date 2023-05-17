@@ -12,6 +12,10 @@
 class Zet < ApplicationRecord
   belongs_to(:exercise, { :required => true, :class_name => "Exercise", :foreign_key => "exercise_id" })
 
+  has_one :workout, through: :exercise
+
+  has_one :user, through: :workout
+
   def to_s
     "#{reps} reps at #{weight} lbs"
   end
