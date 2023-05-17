@@ -14,6 +14,7 @@ gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'faker'
 gem 'chartkick'
+gem "groupdate"
 gem 'kaminari'
 gem "bootstrap4-kaminari-views"
 

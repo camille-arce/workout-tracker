@@ -16,4 +16,6 @@ class Activity < ApplicationRecord
   validates :name, :uniqueness => { :case_sensitive => false }
   
   belongs_to(:activity_to_exercise, { :class_name => "Exercise", :foreign_key => "activity_id", :dependent => :destroy })
+
+  has_many :exercises
 end
