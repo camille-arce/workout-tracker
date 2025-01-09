@@ -5,8 +5,10 @@
 #  id              :integer          not null, primary key
 #  dob             :date
 #  email           :string
+#  first_name      :string
 #  fitness_goal    :text
 #  height          :integer          default(0)
+#  last_name       :string
 #  password_digest :string
 #  username        :string
 #  weight          :integer          default(0)
